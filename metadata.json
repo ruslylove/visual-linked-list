@@ -1,0 +1,5 @@
+{
+  "name": "Interactive Linked List Animator",
+  "description": "A web application that visualizes common linked list operations like insert, delete, and search. It uses the Gemini API to provide step-by-step explanations for each operation, helping users understand the underlying data structure concepts.",
+  "requestFramePermissions": []
+}
