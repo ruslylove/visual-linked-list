@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NodeType, AnimationStep, ListType } from '../types';
+import { NodeType, AnimationStep, ListType } from '../types.ts';
 
 interface LinkedListVisualizerProps {
   nodes: NodeType[];

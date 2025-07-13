@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Controls } from './components/Controls';
-import { LinkedListVisualizer } from './components/LinkedListVisualizer';
-import { Explanation } from './components/Explanation';
-import { getExplanationForOperation } from './services/geminiService';
-import { javaCodeSnippets } from './services/javaCode';
-import { OperationType, AnimationStep, NodeType, ListType } from './types';
+import { Controls } from './components/Controls.tsx';
+import { LinkedListVisualizer } from './components/LinkedListVisualizer.tsx';
+import { Explanation } from './components/Explanation.tsx';
+import { getExplanationForOperation } from './services/geminiService.ts';
+import { javaCodeSnippets } from './services/javaCode.ts';
+import { OperationType, AnimationStep, NodeType, ListType } from './types.ts';
 
 const INITIAL_NODES_SINGLY: NodeType[] = [
   { id: 1, value: 12, next: 2 },

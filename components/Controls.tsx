@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OperationType, ListType } from '../types';
+import { OperationType, ListType } from '../types.ts';
 
 interface ControlsProps {
   onOperate: (type: OperationType, value: number) => void;
