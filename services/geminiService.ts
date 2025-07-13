@@ -2,7 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { OperationType, ListType } from '../types';
 
 // IMPORTANT: REPLACE "YOUR_API_KEY" WITH YOUR ACTUAL GOOGLE GEMINI API KEY
-const API_KEY = "AIzaSyDUTy2ICCdGcHt7G0moLZF6eo9d2ReahVM";
+const API_KEY = "YOUR_API_KEY";
 
 let ai: GoogleGenAI | null = null;
 let apiKeyError = false;
