@@ -23,24 +23,22 @@ An interactive, educational web application for visualizing Singly and Doubly Li
 
 ## Deployment to GitHub Pages
 
-This project is configured for a simple, build-free deployment to GitHub Pages.
+This project is configured for automated deployment to GitHub Pages using GitHub Actions.
 
 1.  **Create a Repository**: Create a new public repository on your GitHub account.
-2.  **Push Code**: Add your files and push them to the `main` branch of your new repository.
+2.  **Push Code**: Add your files (including the `.github/workflows/deploy.yml` file) and push them to the `main` branch of your new repository.
     ```bash
     git init
     git add .
     git commit -m "Initial commit"
     git branch -M main
-    git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+    git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git # Replace with your repo URL
     git push -u origin main
     ```
 3.  **Configure GitHub Pages**:
     - In your repository, go to **Settings** > **Pages**.
-    - Under "Build and deployment", set the **Source** to **Deploy from a branch**.
-    - For the branch, select `main` and `/ (root)`.
-    - Click **Save**.
-4.  **Done!**: Wait a few minutes for the deployment to complete. Your live site will be available at `https://<YOUR_USERNAME>.github.io/<YOUR_REPOSITORY>/`. Remember to update the "Live Demo" link in this README!
+    - Under "Build and deployment", set the **Source** to **GitHub Actions**.
+4.  **Done!**: The workflow will now run automatically on every push to `main`. Wait a few minutes for the first deployment to complete. Your live site will be available at the URL shown in the Pages settings. Remember to update the "Live Demo" link in this README!
 
 ## Local Development
 
