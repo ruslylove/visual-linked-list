@@ -85,7 +85,7 @@ export const App: React.FC = () => {
       setExplanation(response);
     } catch (error) {
       console.error("Failed to fetch explanation:", error);
-      setExplanation("Sorry, I couldn't fetch an explanation for this operation.");
+      setExplanation("An error occurred while fetching the explanation. Please check the console for details. Your API key may be invalid or there might be a network issue.");
     } finally {
       setIsFetchingExplanation(false);
     }

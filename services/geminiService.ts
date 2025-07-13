@@ -1,13 +1,19 @@
 import { GoogleGenAI } from "@google/genai";
 import { OperationType, ListType } from '../types';
 
-const API_KEY = process.env.API_KEY;
+// IMPORTANT: REPLACE "YOUR_API_KEY" WITH YOUR ACTUAL GOOGLE GEMINI API KEY
+const API_KEY = "AIzaSyDUTy2ICCdGcHt7G0moLZF6eo9d2ReahVM";
 
-if (!API_KEY) {
-  console.error("API_KEY is not set. Please set the environment variable.");
+let ai: GoogleGenAI | null = null;
+let apiKeyError = false;
+
+if (!API_KEY || API_KEY === "YOUR_API_KEY") {
+  console.error("API_KEY is not set. Please replace 'YOUR_API_KEY' in services/geminiService.ts with your actual key.");
+  apiKeyError = true;
+} else {
+  ai = new GoogleGenAI({ apiKey: API_KEY });
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY! });
 
 const getOperationDescription = (operation: OperationType, listType: ListType, details: Record<string, any>): string => {
   const listTypeName = listType === 'doubly' ? 'doubly' : 'singly';
@@ -28,6 +34,10 @@ const getOperationDescription = (operation: OperationType, listType: ListType, d
 };
 
 export const getExplanationForOperation = async (operation: OperationType, listType: ListType, details: Record<string, any>): Promise<string> => {
+  if (apiKeyError || !ai) {
+    return Promise.resolve("Could not get explanation. Please check that you have set your API key correctly in `services/geminiService.ts`.");
+  }
+
   const description = getOperationDescription(operation, listType, details);
   const prompt = `
     You are an expert computer science teacher, explaining concepts from a textbook like Goodrich's. 
@@ -52,6 +62,9 @@ export const getExplanationForOperation = async (operation: OperationType, listT
     return response.text;
   } catch (error) {
     console.error(`Error fetching explanation from Gemini for ${operation}:`, error);
+    if (error instanceof Error && error.message.includes('API key not valid')) {
+       return "Failed to get explanation. Your API key seems to be invalid. Please check it in `services/geminiService.ts`.";
+    }
     throw new Error('Failed to communicate with Gemini API.');
   }
 };
